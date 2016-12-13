@@ -1,12 +1,27 @@
 #!/bin/bash
 
-echo 'deb [arch=amd64,i386] https://apt.jenslody.de/stable jessie main' >> /etc/apt/sources.list
-echo 'deb-src https://apt.jenslody.de/stable jessie main' >> /etc/apt/sources.list
+if grep -F '###CUSTOMZIZED CODE BLOCKS###' /etc/apt/sources.list
+then
+	echo "already in file /etc/apt/sources.list"
+else
+
+    var='NOT FOUND and will be configured'
+    var2='###CUSTOMZIZED CODE BLOCKS###' >> /etc/apt/sources.list
+    var3='deb [arch=amd64,i386] https://apt.jenslody.de/stable jessie main'
+    var4='deb-src https://apt.jenslody.de/stable jessie main'
+
+    logwrite="\n$var2\n$var3\n$var4";
+
+    echo -e "$logwrite" >> /etc/apt/sources.list
+
+fi
+
+
 apt-get -y install git
 apt-get -y update
 apt-get -y -f install
 apt-get -y install apt-transport-https
-aptitude -y update
 aptitude -y install build-essential
+apt-get -f install
 apt-get -y install gdb
 

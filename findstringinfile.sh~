@@ -1,0 +1,6 @@
+if grep -Fxq "deb [arch=amd64,i386] https://apt" /etc/apt/source.list
+then
+    # code if found
+else
+    # code if not found
+fi
