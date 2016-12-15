@@ -1,0 +1,6 @@
+cd <verzeichnis>.git
+git add .
+git commit -m "My message"
+git commit -am "save arezzo files"
+git push -u origin master
+git pull -u origin master
